@@ -161,7 +161,6 @@
     "events": "github:jspm/nodelibs-events@^0.1.1"
   },
   "npm:isarray@0.0.1": {},
-  "npm:ieee754@1.1.6": {},
   "npm:base64-js@0.0.8": {},
   "npm:events@1.0.2": {},
   "npm:core-util-is@1.0.2": {
@@ -1952,5 +1951,88 @@
   "npm:buffer-shims@1.0.0": {
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0"
   },
-  "npm:ngstorage@0.3.11": {}
+  "npm:ngstorage@0.3.11": {},
+  "npm:lodash.isobject@3.0.2": {},
+  "npm:lodash.isplainobject@3.2.0": {
+    "lodash._basefor": "npm:lodash._basefor@^3.0.0",
+    "lodash.isarguments": "npm:lodash.isarguments@^3.0.0",
+    "lodash.keysin": "npm:lodash.keysin@^3.0.0"
+  },
+  "npm:lodash.assign@3.2.0": {
+    "lodash._baseassign": "npm:lodash._baseassign@^3.0.0",
+    "lodash._createassigner": "npm:lodash._createassigner@^3.0.0",
+    "lodash.keys": "npm:lodash.keys@^3.0.0"
+  },
+  "npm:invariant@2.2.2": {
+    "loose-envify": "npm:loose-envify@^1.0.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:lodash.isfunction@3.0.8": {},
+  "npm:lodash.isarray@3.0.4": {},
+  "npm:lodash.keys@3.1.2": {
+    "lodash._getnative": "npm:lodash._getnative@^3.0.0",
+    "lodash.isarguments": "npm:lodash.isarguments@^3.0.0",
+    "lodash.isarray": "npm:lodash.isarray@^3.0.0"
+  },
+  "npm:lodash.map@4.6.0": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:loose-envify@1.3.0": {
+    "js-tokens": "npm:js-tokens@^2.0.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "stream": "github:jspm/nodelibs-stream@^0.1.0",
+    "util": "github:jspm/nodelibs-util@^0.1.0"
+  },
+  "npm:lodash.curry@4.1.1": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:lodash.isarguments@3.1.0": {},
+  "npm:lodash._createassigner@3.1.1": {
+    "lodash._bindcallback": "npm:lodash._bindcallback@^3.0.0",
+    "lodash._isiterateecall": "npm:lodash._isiterateecall@^3.0.0",
+    "lodash.restparam": "npm:lodash.restparam@^3.0.0"
+  },
+  "npm:lodash._baseassign@3.2.0": {
+    "lodash._basecopy": "npm:lodash._basecopy@^3.0.0",
+    "lodash.keys": "npm:lodash.keys@^3.0.0"
+  },
+  "npm:lodash.keysin@3.0.8": {
+    "lodash.isarguments": "npm:lodash.isarguments@^3.0.0",
+    "lodash.isarray": "npm:lodash.isarray@^3.0.0"
+  },
+  "npm:ng-redux@3.4.0-beta.1": {
+    "invariant": "npm:invariant@^2.1.0",
+    "lodash.assign": "npm:lodash.assign@^3.2.0",
+    "lodash.curry": "npm:lodash.curry@^4.0.1",
+    "lodash.isarray": "npm:lodash.isarray@^3.0.4",
+    "lodash.isfunction": "npm:lodash.isfunction@^3.0.6",
+    "lodash.isobject": "npm:lodash.isobject@^3.0.2",
+    "lodash.isplainobject": "npm:lodash.isplainobject@^3.2.0",
+    "lodash.map": "npm:lodash.map@^4.4.0",
+    "redux": "npm:redux@^3.0.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:lodash._basefor@3.0.3": {},
+  "npm:lodash._getnative@3.9.1": {},
+  "npm:symbol-observable@1.0.4": {},
+  "npm:lodash.restparam@3.6.1": {},
+  "npm:redux@3.6.0": {
+    "lodash": "npm:lodash@^4.2.1",
+    "lodash-es": "npm:lodash-es@^4.2.1",
+    "loose-envify": "npm:loose-envify@^1.1.0",
+    "symbol-observable": "npm:symbol-observable@^1.0.2",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:lodash._bindcallback@3.0.1": {},
+  "npm:lodash._basecopy@3.0.1": {},
+  "npm:lodash._isiterateecall@3.0.9": {},
+  "npm:lodash-es@4.17.2": {},
+  "npm:process@0.11.9": {
+    "assert": "github:jspm/nodelibs-assert@^0.1.0",
+    "vm": "github:jspm/nodelibs-vm@^0.1.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0"
+  },
+  "npm:lodash@4.17.2": {},
+  "npm:ieee754@1.1.8": {}
 }

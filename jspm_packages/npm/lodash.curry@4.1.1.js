@@ -1,0 +1,1 @@
+module.exports = require("npm:lodash.curry@4.1.1/index");

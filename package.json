@@ -5,6 +5,7 @@
       "angular": "github:angular/bower-angular@^1.5.8",
       "d3": "^4.1.1",
       "moment": "^2.14.1",
+      "ng-redux": "^3.4.0-beta.1",
       "ngstorage": "^0.3.11"
     },
     "devDependencies": {

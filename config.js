@@ -1,5 +1,4 @@
 System.config({
-  // baseURL: "/",
   baseURL: "./",
   defaultJSExtensions: true,
   transpiler: "babel",
@@ -13,6 +12,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   map: {
     "angular": "github:angular/bower-angular@1.5.8",
     "babel": "npm:babel-core@5.8.38",
@@ -22,6 +22,7 @@ System.config({
     "d3-selection": "npm:d3-selection@1.0.0",
     "jspm": "npm:jspm@0.16.41",
     "moment": "npm:moment@2.14.1",
+    "ng-redux": "npm:ng-redux@3.4.0-beta.1",
     "ngstorage": "npm:ngstorage@0.3.11",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -66,7 +67,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.7"
+      "process": "npm:process@0.11.9"
     },
     "github:jspm/nodelibs-punycode@0.1.0": {
       "punycode": "npm:punycode@1.3.2"
@@ -405,7 +406,7 @@ System.config({
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "ieee754": "npm:ieee754@1.1.6",
+      "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -1031,6 +1032,10 @@ System.config({
       "loose-envify": "npm:loose-envify@1.2.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:invariant@2.2.2": {
+      "loose-envify": "npm:loose-envify@1.3.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:is-absolute@0.2.5": {
       "is-relative": "npm:is-relative@0.2.1",
       "is-windows": "npm:is-windows@0.1.1"
@@ -1202,8 +1207,42 @@ System.config({
       "resolve": "npm:resolve@1.1.7",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:lodash._baseassign@3.2.0": {
+      "lodash._basecopy": "npm:lodash._basecopy@3.0.1",
+      "lodash.keys": "npm:lodash.keys@3.1.2"
+    },
+    "npm:lodash._createassigner@3.1.1": {
+      "lodash._bindcallback": "npm:lodash._bindcallback@3.0.1",
+      "lodash._isiterateecall": "npm:lodash._isiterateecall@3.0.9",
+      "lodash.restparam": "npm:lodash.restparam@3.6.1"
+    },
+    "npm:lodash.assign@3.2.0": {
+      "lodash._baseassign": "npm:lodash._baseassign@3.2.0",
+      "lodash._createassigner": "npm:lodash._createassigner@3.1.1",
+      "lodash.keys": "npm:lodash.keys@3.1.2"
+    },
+    "npm:lodash.curry@4.1.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:lodash.isempty@4.3.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:lodash.isplainobject@3.2.0": {
+      "lodash._basefor": "npm:lodash._basefor@3.0.3",
+      "lodash.isarguments": "npm:lodash.isarguments@3.1.0",
+      "lodash.keysin": "npm:lodash.keysin@3.0.8"
+    },
+    "npm:lodash.keys@3.1.2": {
+      "lodash._getnative": "npm:lodash._getnative@3.9.1",
+      "lodash.isarguments": "npm:lodash.isarguments@3.1.0",
+      "lodash.isarray": "npm:lodash.isarray@3.0.4"
+    },
+    "npm:lodash.keysin@3.0.8": {
+      "lodash.isarguments": "npm:lodash.isarguments@3.1.0",
+      "lodash.isarray": "npm:lodash.isarray@3.0.4"
+    },
+    "npm:lodash.map@4.6.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:lodash.mapvalues@4.5.1": {
@@ -1212,6 +1251,13 @@ System.config({
     "npm:loose-envify@1.2.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "js-tokens": "npm:js-tokens@1.0.3",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:loose-envify@1.3.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "js-tokens": "npm:js-tokens@2.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
@@ -1273,6 +1319,18 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:ng-redux@3.4.0-beta.1": {
+      "invariant": "npm:invariant@2.2.2",
+      "lodash.assign": "npm:lodash.assign@3.2.0",
+      "lodash.curry": "npm:lodash.curry@4.1.1",
+      "lodash.isarray": "npm:lodash.isarray@3.0.4",
+      "lodash.isfunction": "npm:lodash.isfunction@3.0.8",
+      "lodash.isobject": "npm:lodash.isobject@3.0.2",
+      "lodash.isplainobject": "npm:lodash.isplainobject@3.2.0",
+      "lodash.map": "npm:lodash.map@4.6.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "redux": "npm:redux@3.6.0"
     },
     "npm:node-uuid@1.4.7": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -1381,6 +1439,11 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
+    "npm:process@0.11.9": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "vm": "github:jspm/nodelibs-vm@0.1.0"
+    },
     "npm:proper-lockfile@1.1.2": {
       "err-code": "npm:err-code@1.1.1",
       "extend": "npm:extend@3.0.0",
@@ -1456,6 +1519,13 @@ System.config({
     "npm:rechoir@0.6.2": {
       "path": "github:jspm/nodelibs-path@0.1.0",
       "resolve": "npm:resolve@1.1.7"
+    },
+    "npm:redux@3.6.0": {
+      "lodash": "npm:lodash@4.17.2",
+      "lodash-es": "npm:lodash-es@4.17.2",
+      "loose-envify": "npm:loose-envify@1.3.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "symbol-observable": "npm:symbol-observable@1.0.4"
     },
     "npm:regenerator-runtime@0.9.5": {
       "path": "github:jspm/nodelibs-path@0.1.0",
