@@ -6,7 +6,8 @@
       "d3": "^4.1.1",
       "moment": "^2.14.1",
       "ng-redux": "^3.4.0-beta.1",
-      "ngstorage": "^0.3.11"
+      "ngstorage": "^0.3.11",
+      "redux": "^3.6.0"
     },
     "devDependencies": {
       "babel": "babel-core@^5.8.24",
