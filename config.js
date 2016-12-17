@@ -1435,11 +1435,6 @@ System.config({
     "npm:process-nextick-args@1.0.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.7": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "vm": "github:jspm/nodelibs-vm@0.1.0"
-    },
     "npm:process@0.11.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -1830,7 +1825,7 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:timers-browserify@1.4.2": {
-      "process": "npm:process@0.11.7"
+      "process": "npm:process@0.11.9"
     },
     "npm:tough-cookie@2.3.1": {
       "net": "github:jspm/nodelibs-net@0.1.2",
