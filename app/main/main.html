@@ -1,15 +1,15 @@
 <div class="title">
 	Time Line
 </div>
-
+<div class="subtitle">{{$ctrl.currentEntry | date:'longDate'}}</div>
 <div class="chart"></div>
 <div class="row">
 	<div class="col-sm-6">
 		<div class="h1">Categories</div>
 		<div class="row">
-			<div class="col-xs-12" ng-repeat="cat in $ctrl.categories">
-				<div>
-					{{cat.category}}
+			<div class="category col-sm-12" ng-repeat="cat in $ctrl.categories">
+				<div class="category__name">
+					{{cat}}
 				</div>
 				<button class="btn btn-default"  ng-click="$ctrl.deleteCategory(cat)">&times;</button>
 			</div>
@@ -46,5 +46,8 @@
 				{{d.time | date:'hh:mm a'}}: {{d.category}}
 			</li>
 		</ul>
+		<pre>
+{{$ctrl.state | json}}
+		</pre>
 	</div>
 </div>

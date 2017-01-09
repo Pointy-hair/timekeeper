@@ -1,66 +1,77 @@
 import BootstrapTimeline from '../../timeline/BootstrapTimeline';
 import moment from 'moment';
-import { CategoriesActions } from './categories.state';
+import { saveToLocaStorage } from '../utils';
+
 export default ngModule => {
 	ngModule.component('main', {
 		templateUrl: 'app/main/main.html',
 		controller: MainController,
 	})
-	ngModule.factory('CategoriesActions', CategoriesActions);
+
 }
 
-function MainController ($log, $scope, $localStorage, $window, $ngRedux, CategoriesActions) {
+function MainController ($log, $scope, $localStorage, $window, $ngRedux, CategoriesActions, EntriesActions, CurrentEntryActions) {
 	let $ctrl = this;
 	let id = 1;
 	let chart;
-	let entry;
-	const DEFAULT_CATEGORIES = [category('Lunch'), category('Overhead'), category('Work')];
+	// let entry;
+
 	const SAVE_DATE_FORMAT = 'YYYY-MM-DD';
-	const SAVED_DATA = 'SAVED_DATA';
+	// const SAVED_DATA = 'SAVED_DATA';
 
 	/****************************************
 	*      Controller Attributes           *
 	****************************************/
-	// $ctrl.categories = [];
+	$ctrl.categories = [];
 	$ctrl.data;
 	$ctrl.times;
 	$ctrl.newCategory;
 	/****************************************
 	*      Controller API                  *
 	****************************************/
-	$ctrl.addCategory = addCategory;
+	$ctrl.addCategory    = addCategory;
 	$ctrl.deleteCategory = deleteCategory;
-	$ctrl.total = total;
+	$ctrl.total          = total;
 	/****************************************
 	*      Lifecycle Hooks                 *
 	****************************************/
 
 	$ctrl.$onInit = function() {
-		entry = setupSaving();
-		$ctrl.categories = entry.categories;
+		setupCurrentEntry();
+		// $ctrl.categories = entry.categories;
 		chart = BootstrapTimeline('.chart')
-			.categories(entry.categories.map(catToName))
-			.data(entry.data.map(inflate))
+		// 	.categories(entry.categories.map(catToName))
+		// 	.data(entry.data.map(inflate))
 			.notifyOnUpdate(function (chart) {
-				// the chart is outside of Angular,
-				// so we need to trigger a digest cycle.
-				$scope.$applyAsync(function () {
+				console.log('chart changes!', chart.data());
+				$ngRedux.dispatch(EntriesActions.addEntries($ngRedux.getState().currentEntry, chart.data()));
 
-					$ctrl.times = chart.timesByCategory();
-					$ctrl.data = chart.data();
-					// sync to local storage
-					entry.data = $ctrl.data;
-				});
-				// $log.debug(chart.debug());
-			})
-		;
+		// 		// the chart is outside of Angular,
+		// 		// so we need to trigger a digest cycle.
+				// $scope.$applyAsync(function () {
+		//
+		// 			$ctrl.times = chart.timesByCategory();
+		// 			$ctrl.data = chart.data();
+		// 			// sync to local storage
+		// 			// entry.data = $ctrl.data;
+		// 		});
+		// 		// $log.debug(chart.debug());
+			});
 		// $log.debug('redux state is: ', $ngRedux.getState());
 		$ngRedux.subscribe(() => {
 			$log.debug('subscribed to changes!', $ngRedux.getState());
+			// chart.categories($ngRedux.getState().categories);
+			$ctrl.categories = $ngRedux.getState().categories;
+			$ctrl.state = $ngRedux.getState();
+			// every change should be saved to local storage
+			saveToLocaStorage($ngRedux.getState());
 		});
-		$ngRedux.dispatch(CategoriesActions.getCategories());
-
+		$log.debug('initial state', $ngRedux.getState());
+		$ctrl.categories = $ngRedux.getState().categories;
+		$ctrl.currentEntry = $ngRedux.getState().currentEntry;
+		$ctrl.state = $ngRedux.getState();
 	};
+
 	$ctrl.$onChanges = function () {}
 	$ctrl.$postLink = function () {}
 	$ctrl.$onDestroy = function () {}
@@ -70,20 +81,15 @@ function MainController ($log, $scope, $localStorage, $window, $ngRedux, Categor
 	****************************************/
 	function addCategory(newCategory) {
 		if(newCategory){
-			$ctrl.categories.push(category(newCategory));
 			$ctrl.newCategory = '';
-			chart.categories($ctrl.categories.map(catToName));
-			$window.document.getElementById('newCategory').focus();
-			// sync to local storage
-			entry.categories = $ctrl.categories;
-
-			$ngRedux.dispatch(CategoriesActions.addCategory(category(newCategory)));
+			document.getElementById('newCategory').focus();
+			$ngRedux.dispatch(CategoriesActions.addCategory(newCategory));
 		}
 	}
 
 	function deleteCategory(category) {
 		// $ctrl.categories.splice(index, 1);
-		chart.categories($ctrl.categories.map(catToName));
+		// chart.categories($ctrl.categories.map(catToName));
 		// sync to local storage
 		// entry.categories = $ctrl.categories;
 		$ngRedux.dispatch(CategoriesActions.removeCategory(category));
@@ -104,24 +110,31 @@ function MainController ($log, $scope, $localStorage, $window, $ngRedux, Categor
 	 * If not, create a new entry to save our data
 	 * @return {[type]} [description]
 	 */
-	function setupSaving() {
-		// debugger;
-		// delete $localStorage[SAVED_DATA];
-		$log.debug('saved data', $localStorage);
-		let today = moment().format(SAVE_DATE_FORMAT);
-		if(!$localStorage[SAVED_DATA]) {
-			$localStorage[SAVED_DATA] = [];
+	// function setupSaving() {
+	// 	// debugger;
+	// 	// delete $localStorage[SAVED_DATA];
+	// 	$log.debug('saved data', $localStorage);
+	// 	let today = moment().format(SAVE_DATE_FORMAT);
+	// 	if(!$localStorage[SAVED_DATA]) {
+	// 		$localStorage[SAVED_DATA] = [];
+	// 	}
+	// 	let allData = $localStorage[SAVED_DATA];
+	// 	let found = allData.find(function (d) {
+	// 		return d.date === today;
+	// 	});
+	// 	if(!found){
+	// 		found = newEntry(today);
+	// 		allData.push(found);
+	// 	}
+	// 	return found;
+	// }
+	let setupCurrentEntry = () => {
+		const currentEntry = $ngRedux.getState().currentEntry;
+		if(!moment().isSame(moment(currentEntry, SAVE_DATE_FORMAT), 'day')) {
+			$ngRedux.dispatch(CurrentEntryActions.setCurrentEntry(moment().format(SAVE_DATE_FORMAT)));
 		}
-		let allData = $localStorage[SAVED_DATA];
-		let found = allData.find(function (d) {
-			return d.date === today;
-		});
-		if(!found){
-			found = newEntry(today);
-			allData.push(found);
-		}
-		return found;
 	}
+
 	function newEntry(date, categories) {
 		categories = categories || DEFAULT_CATEGORIES;
 		return {
@@ -130,11 +143,7 @@ function MainController ($log, $scope, $localStorage, $window, $ngRedux, Categor
 			data: []
 		};
 	}
-	function category(category) {
-		return {
-			category: category
-		};
-	}
+
 	function catToName(d) {
 		return d.category;
 	}

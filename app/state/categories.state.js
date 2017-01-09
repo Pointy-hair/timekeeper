@@ -1,9 +1,11 @@
+import { loadFromLocaStorage } from '../utils';
+
 
 //------------------------------------------------------------
 //	CONSTANTS
 //------------------------------------------------------------
-export const GET_CATEGORIES = 'GET_CATEGORIES';
-export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const GET_CATEGORIES  = 'GET_CATEGORIES';
+export const ADD_CATEGORY    = 'ADD_CATEGORY';
 export const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
 //------------------------------------------------------------
 //	ACTIONS
@@ -30,17 +32,7 @@ export const CategoriesActions = () => {
 //	REDUCERS
 //------------------------------------------------------------
 
-export const INITIAL_CATEGORIES = [
-	{
-		category: 'red'
-	}, {
-		category: 'blue'
-	}, {
-		category: 'yellow'
-	}
-];
-
-export const categories = (state = INITIAL_CATEGORIES, {type, payload}) => {
+export const categories = (state = loadFromLocaStorage().categories, {type, payload}) => {
 	switch (type) {
 		case GET_CATEGORIES:
 			return payload || state;
@@ -50,7 +42,7 @@ export const categories = (state = INITIAL_CATEGORIES, {type, payload}) => {
 			break;
 		case REMOVE_CATEGORY:
 			return state.filter(d => {
-				return d.category !== payload;
+				return d !== payload;
 			});
 			break;
 		default:

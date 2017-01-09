@@ -25,6 +25,7 @@ System.config({
     "ng-redux": "npm:ng-redux@3.4.0-beta.1",
     "ngstorage": "npm:ngstorage@0.3.11",
     "redux": "npm:redux@3.6.0",
+    "redux-thunk": "npm:redux-thunk@2.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },

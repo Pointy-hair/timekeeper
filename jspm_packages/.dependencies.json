@@ -2029,5 +2029,6 @@
     "fs": "github:jspm/nodelibs-fs@^0.1.0"
   },
   "npm:lodash@4.17.2": {},
-  "npm:ieee754@1.1.8": {}
+  "npm:ieee754@1.1.8": {},
+  "npm:redux-thunk@2.1.0": {}
 }

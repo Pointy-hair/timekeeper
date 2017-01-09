@@ -1,0 +1,9 @@
+MultipleErrors: /Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/es/index.js:20:1: Unexpected reserved word export
+/Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/es/index.js:20:8: Semi-colon expected
+/Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/es/index.js:20:8: Unexpected reserved word default
+/Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/es/index.js:20:16: Semi-colon expected
+
+MultipleErrors: /Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/src/index.js:14:1: Unexpected reserved word export
+/Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/src/index.js:14:8: Semi-colon expected
+/Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/src/index.js:14:8: Unexpected reserved word default
+/Users/dave/.jspm/packages/npm/redux-thunk@2.1.0/src/index.js:14:16: Semi-colon expected
