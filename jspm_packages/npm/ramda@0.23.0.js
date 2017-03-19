@@ -1,0 +1,1 @@
+module.exports = require("npm:ramda@0.23.0/index.js");

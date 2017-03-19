@@ -24,6 +24,7 @@ System.config({
     "moment": "npm:moment@2.14.1",
     "ng-redux": "npm:ng-redux@3.4.0-beta.1",
     "ngstorage": "npm:ngstorage@0.3.11",
+    "ramda": "npm:ramda@0.23.0",
     "redux": "npm:redux@3.6.0",
     "redux-thunk": "npm:redux-thunk@2.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -1460,6 +1461,12 @@ System.config({
     },
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:ramda@0.23.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "util": "github:jspm/nodelibs-util@0.1.0",
+      "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
     "npm:randomatic@1.1.5": {
       "is-number": "npm:is-number@2.1.0",
