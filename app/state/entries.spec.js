@@ -6,7 +6,8 @@ describe('entries state actions', () => {
 
   it('should load entries', () => {
     // Object.freeze(state);
-    expect(entries(state, EntriesActions().loadEntries())).toEqual(state);
+    const action = EntriesActions().loadEntries();
+    expect(entries(state, action)).toEqual(state);
   });
 
 })

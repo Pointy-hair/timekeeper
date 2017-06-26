@@ -12,14 +12,16 @@ import { entries, EntriesActions } from './state/entries.state';
 import { currentEntry, CurrentEntryActions } from './state/currentEntry.state';
 
 
+
 const ngModule = angular.module('timelineApp', [ngStorage.name, ngRedux])
 	.config( $ngReduxProvider => {
 		let reducer = combineReducers({
-			categories,
 			entries,
 			currentEntry
 		});
-		$ngReduxProvider.createStoreWith(reducer, [thunk], []);
+		$ngReduxProvider.createStoreWith(reducer,
+            [thunk],
+            [window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()]);
 	})
 	.factory('CategoriesActions', CategoriesActions)
 	.factory('EntriesActions', EntriesActions)

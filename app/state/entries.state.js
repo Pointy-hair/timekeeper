@@ -5,26 +5,21 @@ import { relativeEntry } from './stateHelpers'
 //	CONSTANTS
 //------------------------------------------------------------
 
-export const LOAD_ENTRIES = 'LOAD_ENTRIES';
-export const ADD_ENTRIES = 'ADD_ENTRIES';
+export const LOAD_ENTRIES   = 'LOAD_ENTRIES';
+export const ADD_ENTRIES    = 'ADD_ENTRIES';
 export const PREVIOUS_ENTRY = 'PREVIOUS_ENTRY';
+export const NEXT_ENTRY     = 'NEXT_ENTRY';
 
 //------------------------------------------------------------
 //	ACTIONS
 //------------------------------------------------------------
 
 export const EntriesActions = () => {
-    const loadEntries = () => {
-        return {
-            type: LOAD_ENTRIES
-        };
-    }
 
-    const addEntries = (currentEntry, entryData) => {
+    const addEntries = (entryData) => {
         return {
             type: ADD_ENTRIES,
             payload: {
-                currentEntry,
                 entryData
             }
         };
@@ -33,16 +28,24 @@ export const EntriesActions = () => {
     const previousEntry = () => {
         return {
             type: PREVIOUS_ENTRY,
-            payload: {
-                currentEntry
-            }
+        };
+    }
+    const nextEntry = () => {
+        return {
+            type: NEXT_ENTRY,
+        };
+    }
+    const loadEntries = () => {
+        return {
+            type: LOAD_ENTRIES
         };
     }
 
     return {
-        loadEntries,
         addEntries,
-        previousEntry
+        previousEntry,
+        nextEntry,
+        loadEntries,
     };
 }
 
@@ -52,15 +55,14 @@ export const EntriesActions = () => {
 
 export const entries = (state = loadFromLocaStorage().entries, {type, payload}) => {
     switch (type) {
-        case LOAD_ENTRIES:
-            return payload || state;
         case ADD_ENTRIES:
             let newEntry = {};
             newEntry[payload.currentEntry] = payload.entryData;
             return Object.assign({}, state, newEntry);
         case PREVIOUS_ENTRY:
-        //   return getNthFromEntries(dec(currentEntryIndex(payload.currentEntry, state)), state);
-            return relativeEntry(payload.currentEntry, dec, state)
+            return relativeEntry(payload.currentEntry, dec, state);
+        case NEXT_ENTRY:
+            return relativeEntry(payload.currentEntry, inc, state);
         default:
             return state;
     }

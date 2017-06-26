@@ -59,10 +59,10 @@ function MainController ($log, $scope, $localStorage, $window, $ngRedux, Categor
 			});
 		// $log.debug('redux state is: ', $ngRedux.getState());
 		$ngRedux.subscribe(() => {
-			$log.debug('subscribed to changes!', $ngRedux.getState());
+			// $log.debug('subscribed to changes!', $ngRedux.getState());
 			// chart.categories($ngRedux.getState().categories);
-			$ctrl.categories = $ngRedux.getState().categories;
-			$ctrl.state = $ngRedux.getState();
+			// $ctrl.categories = $ngRedux.getState().categories;
+			// $ctrl.state = $ngRedux.getState();
 			// every change should be saved to local storage
 			saveToLocaStorage($ngRedux.getState());
 		});
@@ -70,6 +70,8 @@ function MainController ($log, $scope, $localStorage, $window, $ngRedux, Categor
 		$ctrl.categories = $ngRedux.getState().categories;
 		$ctrl.currentEntry = $ngRedux.getState().currentEntry;
 		$ctrl.state = $ngRedux.getState();
+        $ngRedux.connect(stateToCtrl, EntriesActions)($ctrl);
+        $ctrl.loadEntries();
 	};
 
 	$ctrl.$onChanges = function () {}
@@ -128,6 +130,13 @@ function MainController ($log, $scope, $localStorage, $window, $ngRedux, Categor
 	// 	}
 	// 	return found;
 	// }
+	function stateToCtrl(state) {
+	    return {
+            entries : state.entries,
+            currentEntry : state.currentEntry,
+			state,
+        };
+	}
 	let setupCurrentEntry = () => {
 		const currentEntry = $ngRedux.getState().currentEntry;
 		if(!moment().isSame(moment(currentEntry, SAVE_DATE_FORMAT), 'day')) {

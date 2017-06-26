@@ -1,9 +1,13 @@
-export const LOCAL_STORAGE_KEY = 'timeline';
+export const LOCAL_STORAGE_KEY = 'timeline-dad8c';
 
 export const INITIAL_DATA = {
-	categories: ['Lunch', 'Overhead', 'Work'],
-	entries: { },
-	currentEntry: '2016-12-25'
+	// categories: ['Lunch', 'Overhead', 'Work'],
+	entries: {
+        byId: {},
+        allIds: []
+    },
+	currentEntry: '',
+    nextId: 1
 };
 
 export const saveToLocaStorage = (data) => {

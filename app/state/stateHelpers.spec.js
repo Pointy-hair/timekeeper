@@ -1,4 +1,4 @@
-import { getNthFromEntries, currentEntryIndex, relativeEntry } from './stateHelpers'
+import { relativeEntry } from './stateHelpers'
 import { identity, inc, dec } from 'ramda'
 describe('state helpers', () => {
     const state = {
